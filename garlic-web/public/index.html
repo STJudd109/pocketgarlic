@@ -4,16 +4,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Pocket Garlic</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
-  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css'>
-<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css'>
+	<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
 
 	<!-- add to homescreen for ios -->
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-status-bar-style" content="white">
 	<link rel="apple-touch-icon" href="garlicoin_icon_light.png">
 
 	<link rel="manifest" href="/manifest.json">
@@ -38,117 +38,124 @@
 
 	<nav class="navbar navbar-light bg-light">
 		<a class="navbar-brand" href="#">
-		<img src="garlicoin_icon_light.png" width="30" height="30" class="d-inline-block align-top" alt="">
-		PocketGarlic
-	  </a>
-	<!-- 	<a href="">
+			<img src="garlicoin_icon_light.png" width="30" height="30" class="d-inline-block align-top" alt=""> PocketGarlic
+		</a>
+		<!-- 	<a href="">
 			<sm>tap to refresh</sm>
 		</a> -->
-	<!-- 	<button class="btn btn-outline-danger my-2 my-sm-0" id="button-clear" >-</button> -->
+		<!-- 	<button class="btn btn-outline-danger my-2 my-sm-0" id="button-clear" >-</button> -->
 		<button class="btn btn-outline-warning my-2 my-sm-0 small-add" data-toggle="modal" data-target="#myModal">+</button>
 	</nav>
-	
+
 	<div class="jumbotron jumbotron-fluid">
-		<div class="container">
-			<h1 class="display-4"><span id="total_bal">0</span> GRLC</h1>
+		<div class="container-fluid">
+			<h1 class="display-4">
+				<span id="total_bal">0</span> GRLC</h1>
 			<p class="lead" id="sub-text">Sweet, sweet garlic....add more...</p>
 		</div>
 	</div>
-	
-	<div class="row lrg-add">
-		<button class="btn btn-outline-warning mx-auto" style="width: 15rem;" data-toggle="modal" data-target="#myModal">+</button>
+
+
+	<div class="container-fluid">
+		<div class="row justify-content-center align-items-end lrg-add">
+			<div class="col-auto">
+				<button class="btn btn-outline-warning mx-auto" style="width: 15rem;" data-toggle="modal" data-target="#myModal">+</button>
+			</div>
+		</div>
 	</div>
-	
-	<div class="table-responsive-sm">
+
+
+	<div class="table-responsive">
 		<table class="table">
 			<tr>
 				<th>Wallet</th>
 				<th>Pool</th>
-				<th>I/O -<small>Total</small></th>
+				<th>I/O -
+					<small>Total</small>
+				</th>
 				<th>Balance</th>
 			</tr>
 		</table>
-	
 	</div>
-	
-	<div class="row">
-		<button class="btn btn-outline-danger mx-auto clear-data" style="width: 6rem;" data-toggle="modal" data-target="#myModal2">clear data</button>
+
+	<div class="container-fluid">
+		<div class="row justify-content-center align-items-end">
+			<div class="col-auto">
+				<button class="btn btn-outline-danger clear-data" style="width: 6rem;" data-toggle="modal" data-target="#myModal2">clear data</button>
+			</div>
+		</div>
 	</div>
-	<div id="cards" class="card-deck">
-	</div>
-	<div class="row text-center">
-	
-		<!-- Modal -->
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Add Wallet Details</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			  <span aria-hidden="true">&times;</span>
-			</button>
-					</div>
-					<div class="modal-body">
-						<form>
-							<div class="form-group row">
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="wallet-alias" placeholder="Wallet Alias">
-								</div>
+	<!-- Modal for adding devices -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Add Wallet Details</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group row">
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="wallet-alias" placeholder="Wallet Alias">
 							</div>
-	
-							<div class="form-group row">
-								<div class="col-sm-10">
-									<input type="text" class="form-control" id="wallet-address" placeholder="Wallet Address">
-								</div>
+						</div>
+
+						<div class="form-group row">
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="wallet-address" placeholder="Wallet Address">
 							</div>
-							<div class="form-group row">
-								<div class="col-sm-10">
-									<select class="form-control" id="wallet-pool">
-									  <option>Other</option>
-										<option>Bakery</option>
-										<option>RichGarlicBoye</option>
-										<option>GarlicPool</option>
-									</select>
-								</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-10">
+								<select class="form-control" id="wallet-pool">
+									<option>Other</option>
+									<option>Bakery</option>
+									<option>RichGarlicBoye</option>
+									<option>GarlicPool</option>
+								</select>
 							</div>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-outline-warning" id="button-save">Save</button>
-					</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline-warning" id="button-save">Save</button>
 				</div>
 			</div>
 		</div>
-	
-	
-		<!-- Modal -->
-		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			  <span aria-hidden="true">&times;</span>
-			</button>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger" id="button-clear">Clear Data</button>
-					</div>
+	</div>
+
+
+	<!-- Modal for are you sure -->
+	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" id="button-clear">Clear Data</button>
 				</div>
 			</div>
 		</div>
-	
-	
-	
-		<!-- 			<div class="input-group">
+	</div>
+
+
+
+	<!-- 			<div class="input-group">
 			<input id="address" type="text" class="form-control" placeholder="GRLC wallet address" aria-label="GRLC wallet address" aria-describedby="basic-addon2">
 			<div class="input-group-append">
 				<button id="button-check" class="btn btn-outline-primary" type="button">Check</button>
 				<button id="button-save" class="btn btn-outline-success" type="button">Save</button>
 				<button id="button-clear" class="btn btn-warning">Clear</button>
 			</div> -->
-		
-		
+
+
 	<!-- 		<tr>
 				<td>name</td>
 				<td>RGB</td>
@@ -156,9 +163,9 @@
 				<td>22.34</td>
 			</tr> -->
 
-			<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-			<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'></script>
-			<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'></script>
+	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
 
 
 

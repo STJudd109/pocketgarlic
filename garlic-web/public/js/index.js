@@ -1,4 +1,4 @@
-// A $( document ).ready() block.
+/////////////////////Initialize & load what needs to be loaded
 $(document).ready(function() {
 	if (localStorage.wallets) {
 		$(".lrg-add").hide();
@@ -29,50 +29,7 @@ $(document).ready(function() {
 	}
 });
 
-//check
-$("#button-check").click(function() {
-	var address = document.getElementById("address").value;
-	if(address != ""){
-		fetch_wallet(address);
-	} else {
-		//nothing
-	}
-	
-});
-// GJobvUEzqnfWT8kXhGdf95bPE19EocYgWJ
-// Retrieve
-
-//Save
-$("#button-save").click(function() {
-	var address = $("#wallet-address").val();
-	var name = $("#wallet-alias").val();
-	var pool = $("#wallet-pool").val();
-	console.log(address + " " +name + " " + pool);
-	json_store(address, name, pool);
-	window.location.reload(true);
-});
-
-$(".jumbotron").click(function() {
-	window.location.reload(true);
-});
-
-//clear storage
-$("#button-clear").click(function() {
-	localStorage.removeItem("wallets");
-	window.location.reload(true);
-});
-
-function get_store(){
-	var temp_store = localStorage.getItem('wallets');
-	if(Array.isArray(JSON.parse(temp_store))){
-		 return JSON.parse(temp_store);
-		 }
-else {
-	return [];
-}
-	
-};
-
+////////////////////////////////////////////
 
 function json_store(address, name, pool) {
 		// Put the object into storage
@@ -86,6 +43,17 @@ function json_store(address, name, pool) {
 		old_wallets.push(data);
 		localStorage.setItem('wallets', JSON.stringify(old_wallets));
 	console.log("saved wallet:" + address);
+};
+
+function get_store(){
+	var temp_store = localStorage.getItem('wallets');
+	if(Array.isArray(JSON.parse(temp_store))){
+		 return JSON.parse(temp_store);
+		 }
+else {
+	return [];
+}
+	
 };
 
 function load_cards(){
@@ -124,35 +92,17 @@ function fetch_wallet(address, wallet){
 	});
 };
 
-// function rm_cards() {
-// 	$("#cards").empty();
-// };
-
-// function update_vals(){
-// 	var wallets = get_store();
-// 	var addresses = [];
-// if(wallets.length > 0){
-// 	wallets.forEach(function (item){
-// 		addresses.push(item.address);
-// 		console.log(item.address);
-// 	});
-// 	localStorage.removeItem("wallets");
-// 	addresses.forEach(function (adds){
-// 		json_store(adds);
-// 	});
-// };
-// };
-
 // function get_listing(){
 // 	$.get("http://api.cryptocoincharts.info/listCoins", function(res){
 		
 // 	});
 // };
 
+///////////////////////////add UI elements
+
 function gen_card(wallet){
 	console.log("gen wallet");
 	var card = '<div class="card mx-auto mb-3"><div class="card-body"><h5 id="saved-bal" class="card-title">'+ wallet.balance+' - GRLC</h5><p id="saved-wallet" class="card-text">'+wallet.address+'</p><a href="https://explorer.grlc-bakery.fun/address/'+wallet.address+'" id="saved-link" class="btn btn-primary">Go to Explorer</a></div></div>';
-
 	$( "#cards" ).append(card);
 };
 
@@ -165,12 +115,56 @@ var row = '<tr><td>'+wallet.name+'</td><td>'+wallet.pool+'</td><td>'+round(recei
 	$( ".table" ).append(row);
 };
 
-function round(value, decimals) {
-  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
-}
-
 function gen_words(){
-	var items = ["Sweet, sweet garlic....add more...", "Cloves on Cloves on Cloves", "To the Moon!!", "Is your Lambo pre-ordered yet?", "Is the still airdrop up!?...", "GPU = Garlic Production Unit"];
+	var items = ["Cloves on Cloves on Cloves", "To the Moon!!", "To the Moon!!", "Is your Lambo pre-ordered yet?", "Is the still airdrop up!?...", "GPU = Garlic Production Unit"];
 	var item = items[Math.floor(Math.random()*items.length)];
 	document.getElementById("sub-text").innerHTML= item;
 };
+
+/////////////////////////////////////////////
+
+
+//////////////////////////////Helper functions
+
+function round(value, decimals) {
+	return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+  }
+
+
+//////////////////////////////////////////////
+
+
+////////////////////////////////Buttons
+$("#button-check").click(function() {
+	var address = document.getElementById("address").value;
+	if(address != ""){
+		fetch_wallet(address);
+	} else {
+		//nothing
+	}
+	
+});
+// GJobvUEzqnfWT8kXhGdf95bPE19EocYgWJ
+// Retrieve
+
+//Save
+$("#button-save").click(function() {
+	var address = $("#wallet-address").val();
+	var name = $("#wallet-alias").val();
+	var pool = $("#wallet-pool").val();
+	console.log(address + " " +name + " " + pool);
+	json_store(address, name, pool);
+	window.location.reload(true);
+});
+
+$(".jumbotron").click(function() {
+	window.location.reload(true);
+});
+
+//clear storage
+$("#button-clear").click(function() {
+	localStorage.removeItem("wallets");
+	window.location.reload(true);
+});
+
+////////////////////////////////////////////

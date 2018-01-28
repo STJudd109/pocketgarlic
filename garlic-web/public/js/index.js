@@ -77,6 +77,7 @@ function fetch_bal(address){
 		localStorage.setItem('gwallet_bal_total', total);
 		document.getElementById("total_bal").innerHTML= localStorage.getItem('gwallet_bal_total');
 		document.getElementById("usd").innerHTML= usd_total;
+		document.getElementById("usd-rate").innerHTML= round(usd,2);
 	});
 };
 

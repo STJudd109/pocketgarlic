@@ -5,6 +5,7 @@ $(document).ready(function() {
 		load_cards();
 		total_bal();
 		gen_words();
+		get_listing();
 	} else {
 		console.log("nothing saved");
 		$(".clear-data").hide();
@@ -68,11 +69,14 @@ function fetch_bal(address){
 	$.get("https://explorer.grlc-bakery.fun/ext/getbalance/" + address, function(res) {
 		// console.log(res);
 		var bal = localStorage.getItem('gwallet_bal_total');
+		var usd = parseFloat(localStorage.getItem('gwallet_usd'));
 		var con_bal = parseFloat(bal);
 		var total = con_bal + parseFloat(res);
 		total = round(total, 3);
+		var usd_total = round((total * usd),2);
 		localStorage.setItem('gwallet_bal_total', total);
 		document.getElementById("total_bal").innerHTML= localStorage.getItem('gwallet_bal_total');
+		document.getElementById("usd").innerHTML= usd_total;
 	});
 };
 
@@ -92,12 +96,15 @@ function fetch_wallet(address, wallet){
 	});
 };
 
-// function get_listing(){
-// 	$.get("http://api.cryptocoincharts.info/listCoins", function(res){
-		
-// 	});
-// };
 
+function get_listing(){
+	console.log('getting listings');
+	$.get("https://api.coinmarketcap.com/v1/ticker/garlicoin/?convert=USD", function(res){
+		console.log(res[0].price_usd);
+		localStorage.setItem('gwallet_usd', res[0].price_usd);
+		// document.getElementById("usd").innerHTML= round(res[0].price_usd, 2);
+	});
+};
 ///////////////////////////add UI elements
 
 function gen_card(wallet){
